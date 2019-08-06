@@ -1,0 +1,92 @@
+/*
+@Time : 2019/4/3 11:09 
+@Author : lukebryan
+@File : NoticeService
+@Software: GoLand
+*/
+package service
+
+import (
+	"../models"
+	"../repo"
+	"../util"
+	"../middleware"
+	// "fmt"
+	// "github.com/spf13/cast"
+	// "log"
+)
+
+type UserService interface {
+	Login(m map[string]string) (result models.Result)
+	Save(user models.User) (result models.Result)
+}
+type userServices struct {
+
+}
+
+func NewUserServices() UserService {
+	return &userServices{}
+}
+
+var userRepo = repo.NewUserRepository()
+
+/*
+登录
+ */
+func (u userServices) Login(m map[string]string) (result models.Result) {
+
+	if m["Username"] == "" {
+		result.Code = -1
+		result.Msg = "请输入用户名！"
+		return
+	}
+	if m["Password"] == "" {
+		result.Code = -1
+		result.Msg = "请输入密码！"
+		return
+	}
+	user := userRepo.GetUserByUserNameAndPwd(m["Username"],utils.GetMD5String(m["Password"]))
+	if user.ID == 0 {
+		result.Code = -1
+		result.Msg = "用户名或密码错误!"
+		return
+	}
+	// userID,err := api.LoginApi()
+	// if err != nil {
+	// 	log.Println("登录API失败!请联系管理员")
+	// }
+
+	// utils.ApiToken[cast.ToString(user.ID)] = userID
+
+	// fmt.Println("ApiToken: ",utils.ApiToken	)
+
+	user.Token = middleware.GenerateToken(user)
+	// user.Session = userID
+	result.Code = 0
+	result.Data = user
+	return
+}
+
+/*
+保存
+ */
+func (u userServices) Save(user models.User) (result models.Result){
+	//添加
+	if user.ID == 0 {
+		agen := userRepo.GetUserByUsername(user.Username)
+		if agen.ID != 0 {
+			result.Msg = "登录名重复,保存失败"
+			return
+		}
+	}
+
+	code,p := userRepo.Save(user)
+	if code == -1 {
+		result.Code = -1;
+		result.Msg = "保存失败"
+		return
+	}
+	result.Code = 0
+	result.Data = p
+	return
+}
