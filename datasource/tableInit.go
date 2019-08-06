@@ -10,5 +10,6 @@ func Createtable() {
 		&models.User{},
 		&models.Book{},
 		&models.Article{},
+		&models.ArticleType{},
 	)
 }

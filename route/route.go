@@ -13,5 +13,5 @@ func InitRouter(app *iris.Application) {
 	app.Use(middleware.GetJWT().Serve)
 	mvc.New(app.Party(bathUrl + "/wechat")).Handle(controllers.NewWechatController())
 	mvc.New(app.Party( bathUrl + "/book")).Handle(controllers.NewBookController())
-
+	mvc.New(app.Party( bathUrl + "/article")).Handle(controllers.NewArticleController())
 }
