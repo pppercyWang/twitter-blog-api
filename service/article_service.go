@@ -8,6 +8,7 @@ import (
 
 type ArticleService interface {
 	GetArticleList(m map[string]interface{}) (result models.Result)
+	SaveArticle(m map[string]interface{}) (result models.Result)
 }
 type articleService struct {
 }
@@ -28,3 +29,13 @@ func (u articleService) GetArticleList(m map[string]interface{}) (result models.
 	result.Data = maps
 	return
 }
+func (u articleService) SaveArticle(m map[string]interface{}) (result models.Result){
+	result.Code = 0
+	article := articleRepo.SaveArticle(m)
+	maps := make(map[string]interface{},2)
+	maps["article"] = article
+	result.Data = maps
+	return
+}
+
+

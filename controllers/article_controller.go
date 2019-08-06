@@ -24,3 +24,12 @@ func (g *ArticleController) PostList() (result models.Result)  {
 	}
 	return g.Service.GetArticleList(m)
 }
+func (g *ArticleController) PostSave() (result models.Result)  {
+	var m map[string]interface{}
+	err := g.Ctx.ReadJSON(&m)
+	if err != nil {
+		log.Println("ReadJSON Error:", err)
+	}
+	return g.Service.SaveArticle(m)
+}
+
