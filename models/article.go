@@ -10,5 +10,6 @@ type Article struct {
 	ArticleTypeId     uint `gorm:"default:0"`
 	Title     string `gorm:"type:varchar(50);not null;"`
 	Description     string `gorm:"type:varchar(255);"`
-	Likes int `gorm:"default:0"`
+	Likes uint `gorm:"default:0"`
+	Personal uint `gorm:"default:0"`
 }

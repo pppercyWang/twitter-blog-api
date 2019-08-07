@@ -6,9 +6,7 @@ import (
 
 func Createtable() {
 	GetDB().AutoMigrate(
-		&models.Wechat{},
 		&models.User{},
-		&models.Book{},
 		&models.Article{},
 		&models.ArticleType{},
 	)
