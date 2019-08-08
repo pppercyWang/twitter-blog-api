@@ -32,7 +32,7 @@ func (u articleService) GetArticleList(m map[string]interface{}) (result models.
 func (u articleService) SaveArticle(m map[string]interface{}) (result models.Result){
 	result.Code = 0
 	article := articleRepo.SaveArticle(m)
-	maps := make(map[string]interface{},2)
+	maps := make(map[string]interface{},1)
 	maps["article"] = article
 	result.Data = maps
 	return
