@@ -64,6 +64,7 @@ func (u userServices) Login(m map[string]string) (result models.Result) {
 	// user.Session = userID
 	result.Code = 0
 	result.Data = user
+	result.Msg = "登录成功"
 	return
 }
 

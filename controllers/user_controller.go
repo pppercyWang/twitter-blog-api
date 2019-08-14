@@ -23,7 +23,6 @@ func (g *UserController) PostLogin() models.Result {
 	if err != nil {
 		log.Println("ReadJSON Error:", err)
 	}
-
 	result := g.Service.Login(m)
 	return result
 }

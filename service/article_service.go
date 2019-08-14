@@ -35,6 +35,7 @@ func (u articleService) SaveArticle(m map[string]interface{}) (result models.Res
 	maps := make(map[string]interface{},1)
 	maps["article"] = article
 	result.Data = maps
+	result.Msg = "保存成功"
 	return
 }
 
