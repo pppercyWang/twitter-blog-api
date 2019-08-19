@@ -8,6 +8,7 @@ func Createtable() {
 	GetDB().AutoMigrate(
 		&models.User{},
 		&models.Article{},
-		&models.ArticleType{},
+		&models.Category{},
+		&models.ArticleCategory{},
 	)
 }

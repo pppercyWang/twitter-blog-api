@@ -12,22 +12,23 @@ import (
 	// "../util"
 	"github.com/spf13/cast"
 	// "log"
-	// "fmt"
+	_ "fmt"
+	// "reflect"
 	// "io/ioutil"
 	// "testing"
 )
 
-type AticleRepository interface {
+type ArticleRepository interface {
 	GetArticleList(m map[string]interface{}) (total int, articles []models.Article)
-	SaveArticle(m map[string]interface{}) (article models.Article)
+	SaveArticle(m map[string]interface{}) (article models.Article,err error)
 }
 
-func NewArticleRepository() AticleRepository {
-	return &acticleRepository{}
+func NewArticleRepository() ArticleRepository {
+	return &articleRepository{}
 }
 
-type acticleRepository struct{}
-func (n acticleRepository)GetArticleList(m map[string]interface{})(total int,articles []models.Article){
+type articleRepository struct{}
+func (n articleRepository)GetArticleList(m map[string]interface{})(total int,articles []models.Article){
 	db := datasource.GetDB()
 	err := db.Limit(cast.ToInt(m["Size"])).Offset((cast.ToInt(m["Page"])-1)*cast.ToInt(m["Size"])).Find(&articles).Error
 	if err!=nil {
@@ -36,13 +37,11 @@ func (n acticleRepository)GetArticleList(m map[string]interface{})(total int,art
 	datasource.GetDB().Model(&models.Article{}).Count(&total)
 	return
 }
-const fileName = "README.md"
-func (n acticleRepository)SaveArticle(m map[string]interface{})(article models.Article){
-	article.Content = cast.ToString(m["Content"]);
-	article.ArticleTypeId = cast.ToUint(m["ArticleTypeId"]);
-	article.Title = cast.ToString(m["Title"]);
-	article.Personal = cast.ToUint(m["Personal"]);
+func (n articleRepository)SaveArticle(m map[string]interface{})(article models.Article,err error){
+	article.Content = cast.ToString(m["Content"])
+	article.Title = cast.ToString(m["Title"])
+	article.Personal = cast.ToUint(m["Personal"])
 	db := datasource.GetDB()
-	db.Save(&article)
+	err = db.Save(&article).Error;
 	return
 }
