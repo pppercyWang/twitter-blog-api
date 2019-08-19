@@ -1,9 +1,3 @@
-/*
-@Time : 2019/5/8 10:05
-@Author : lukebryan
-@File : user
-@Software: GoLand
-*/
 package models
 
 import "github.com/jinzhu/gorm"
