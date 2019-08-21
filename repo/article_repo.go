@@ -12,7 +12,8 @@ import (
 	// "../util"
 	"github.com/spf13/cast"
 	// "log"
-	_ "fmt"
+	// "fmt"
+	"strings"
 	// "reflect"
 	// "io/ioutil"
 	// "testing"
@@ -38,10 +39,31 @@ func (n articleRepository)GetArticleList(m map[string]interface{})(total int,art
 	return
 }
 func (n articleRepository)SaveArticle(m map[string]interface{})(article models.Article,err error){
-	article.Content = cast.ToString(m["Content"])
+	content := cast.ToString(m["Content"])
+	article.Content = content
+	article.Description = grabDescription(content)
 	article.Title = cast.ToString(m["Title"])
 	article.Personal = cast.ToUint(m["Personal"])
 	db := datasource.GetDB()
 	err = db.Save(&article).Error;
 	return
+}
+func grabDescription(str string)string{
+	i := strings.Index(str, "```");
+	res := ""
+	lenth := len(str)
+	if i != -1{
+		if i<200{
+			res = str[0:i]
+		}else{
+			res = str[0:200]
+		}
+	}else{
+		if lenth<=200 {
+			res = str[0:lenth]
+		}else{
+			res = str[0:200]
+		}
+	}
+	return res
 }
