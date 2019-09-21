@@ -11,7 +11,7 @@
  Target Server Version : 50716
  File Encoding         : 65001
 
- Date: 20/09/2019 14:59:27
+ Date: 21/09/2019 17:54:51
 */
 
 SET NAMES utf8mb4;
@@ -33,7 +33,7 @@ CREATE TABLE `article`  (
   `personal` int(10) UNSIGNED NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_article_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of article
@@ -50,6 +50,37 @@ INSERT INTO `article` VALUES (31, '2019-09-20 06:53:35', '2019-09-20 06:53:35', 
 INSERT INTO `article` VALUES (32, '2019-09-20 06:53:42', '2019-09-20 06:53:42', NULL, 'cascsa', 'cxzcxz', 'cascsa', 0, 0);
 INSERT INTO `article` VALUES (33, '2019-09-20 06:53:50', '2019-09-20 06:53:50', NULL, 'cascsa', 'vcxvcxsd', 'cascsa', 0, 0);
 INSERT INTO `article` VALUES (34, '2019-09-20 06:53:56', '2019-09-20 06:53:56', NULL, 'cascsa', 'bfgd', 'cascsa', 0, 0);
+INSERT INTO `article` VALUES (35, '2019-09-21 01:59:51', '2019-09-21 01:59:51', NULL, 'dasdsadd', 'adsdsa', 'dasdsadd', 0, 0);
+INSERT INTO `article` VALUES (36, '2019-09-21 01:59:59', '2019-09-21 01:59:59', NULL, 'dasdsadd', 'vvvv', 'dasdsadd', 0, 0);
+INSERT INTO `article` VALUES (37, '2019-09-21 02:00:06', '2019-09-21 02:00:06', NULL, 'dasdsadd', 'bbcvbcvbcv', 'dasdsadd', 0, 0);
+INSERT INTO `article` VALUES (38, '2019-09-21 02:00:14', '2019-09-21 02:00:14', NULL, 'dasdsadd', 'dcwqwq', 'dasdsadd', 0, 0);
+INSERT INTO `article` VALUES (39, '2019-09-21 02:00:30', '2019-09-21 02:00:30', NULL, 'vcxvcx', 'cdscds', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (40, '2019-09-21 02:00:36', '2019-09-21 02:00:36', NULL, 'vcxvcx', 'cdscdscc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (41, '2019-09-21 02:00:41', '2019-09-21 02:00:41', NULL, 'vcxvcx', 'cdscdsccvvv', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (42, '2019-09-21 02:00:46', '2019-09-21 02:00:46', NULL, 'vcxvcx', 'bbb', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (43, '2019-09-21 02:00:52', '2019-09-21 02:00:52', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (44, '2019-09-21 02:00:53', '2019-09-21 02:00:53', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (45, '2019-09-21 02:00:54', '2019-09-21 02:00:54', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (46, '2019-09-21 02:00:55', '2019-09-21 02:00:55', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (47, '2019-09-21 02:00:56', '2019-09-21 02:00:56', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (48, '2019-09-21 02:00:56', '2019-09-21 02:00:56', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (49, '2019-09-21 02:00:57', '2019-09-21 02:00:57', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (50, '2019-09-21 02:00:58', '2019-09-21 02:00:58', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (51, '2019-09-21 02:00:59', '2019-09-21 02:00:59', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (52, '2019-09-21 02:01:00', '2019-09-21 02:01:00', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (53, '2019-09-21 02:01:01', '2019-09-21 02:01:01', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (54, '2019-09-21 02:01:01', '2019-09-21 02:01:01', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (55, '2019-09-21 02:01:02', '2019-09-21 02:01:02', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (56, '2019-09-21 02:01:03', '2019-09-21 02:01:03', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (57, '2019-09-21 02:01:04', '2019-09-21 02:01:04', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (58, '2019-09-21 02:01:04', '2019-09-21 02:01:04', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (59, '2019-09-21 02:01:05', '2019-09-21 02:01:05', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (60, '2019-09-21 02:01:06', '2019-09-21 02:01:06', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (61, '2019-09-21 02:01:07', '2019-09-21 02:01:07', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (62, '2019-09-21 02:01:07', '2019-09-21 02:01:07', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (63, '2019-09-21 02:01:08', '2019-09-21 02:01:08', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (64, '2019-09-21 02:01:09', '2019-09-21 02:01:09', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
+INSERT INTO `article` VALUES (65, '2019-09-21 02:01:10', '2019-09-21 02:01:10', NULL, 'vcxvcx', 'bbbc', 'vcxvcx', 0, 0);
 
 -- ----------------------------
 -- Table structure for article_category
@@ -64,7 +95,7 @@ CREATE TABLE `article_category`  (
   `article_id` int(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_article_category_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 80 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of article_category
@@ -81,6 +112,37 @@ INSERT INTO `article_category` VALUES (45, '2019-09-20 06:53:35', '2019-09-20 06
 INSERT INTO `article_category` VALUES (46, '2019-09-20 06:53:42', '2019-09-20 06:53:42', NULL, 8, 32);
 INSERT INTO `article_category` VALUES (47, '2019-09-20 06:53:50', '2019-09-20 06:53:50', NULL, 9, 33);
 INSERT INTO `article_category` VALUES (48, '2019-09-20 06:53:57', '2019-09-20 06:53:57', NULL, 15, 34);
+INSERT INTO `article_category` VALUES (49, '2019-09-21 01:59:51', '2019-09-21 01:59:51', NULL, 5, 35);
+INSERT INTO `article_category` VALUES (50, '2019-09-21 01:59:59', '2019-09-21 01:59:59', NULL, 10, 36);
+INSERT INTO `article_category` VALUES (51, '2019-09-21 02:00:06', '2019-09-21 02:00:06', NULL, 15, 37);
+INSERT INTO `article_category` VALUES (52, '2019-09-21 02:00:14', '2019-09-21 02:00:14', NULL, 17, 38);
+INSERT INTO `article_category` VALUES (53, '2019-09-21 02:00:30', '2019-09-21 02:00:30', NULL, 7, 39);
+INSERT INTO `article_category` VALUES (54, '2019-09-21 02:00:36', '2019-09-21 02:00:36', NULL, 4, 40);
+INSERT INTO `article_category` VALUES (55, '2019-09-21 02:00:41', '2019-09-21 02:00:41', NULL, 10, 41);
+INSERT INTO `article_category` VALUES (56, '2019-09-21 02:00:46', '2019-09-21 02:00:46', NULL, 11, 42);
+INSERT INTO `article_category` VALUES (57, '2019-09-21 02:00:53', '2019-09-21 02:00:53', NULL, 6, 43);
+INSERT INTO `article_category` VALUES (58, '2019-09-21 02:00:53', '2019-09-21 02:00:53', NULL, 6, 44);
+INSERT INTO `article_category` VALUES (59, '2019-09-21 02:00:54', '2019-09-21 02:00:54', NULL, 6, 45);
+INSERT INTO `article_category` VALUES (60, '2019-09-21 02:00:55', '2019-09-21 02:00:55', NULL, 6, 46);
+INSERT INTO `article_category` VALUES (61, '2019-09-21 02:00:56', '2019-09-21 02:00:56', NULL, 6, 47);
+INSERT INTO `article_category` VALUES (62, '2019-09-21 02:00:56', '2019-09-21 02:00:56', NULL, 6, 48);
+INSERT INTO `article_category` VALUES (63, '2019-09-21 02:00:57', '2019-09-21 02:00:57', NULL, 6, 49);
+INSERT INTO `article_category` VALUES (64, '2019-09-21 02:00:58', '2019-09-21 02:00:58', NULL, 6, 50);
+INSERT INTO `article_category` VALUES (65, '2019-09-21 02:00:59', '2019-09-21 02:00:59', NULL, 6, 51);
+INSERT INTO `article_category` VALUES (66, '2019-09-21 02:01:00', '2019-09-21 02:01:00', NULL, 6, 52);
+INSERT INTO `article_category` VALUES (67, '2019-09-21 02:01:01', '2019-09-21 02:01:01', NULL, 6, 53);
+INSERT INTO `article_category` VALUES (68, '2019-09-21 02:01:01', '2019-09-21 02:01:01', NULL, 6, 54);
+INSERT INTO `article_category` VALUES (69, '2019-09-21 02:01:02', '2019-09-21 02:01:02', NULL, 6, 55);
+INSERT INTO `article_category` VALUES (70, '2019-09-21 02:01:03', '2019-09-21 02:01:03', NULL, 6, 56);
+INSERT INTO `article_category` VALUES (71, '2019-09-21 02:01:04', '2019-09-21 02:01:04', NULL, 6, 57);
+INSERT INTO `article_category` VALUES (72, '2019-09-21 02:01:04', '2019-09-21 02:01:04', NULL, 6, 58);
+INSERT INTO `article_category` VALUES (73, '2019-09-21 02:01:05', '2019-09-21 02:01:05', NULL, 6, 59);
+INSERT INTO `article_category` VALUES (74, '2019-09-21 02:01:06', '2019-09-21 02:01:06', NULL, 6, 60);
+INSERT INTO `article_category` VALUES (75, '2019-09-21 02:01:07', '2019-09-21 02:01:07', NULL, 6, 61);
+INSERT INTO `article_category` VALUES (76, '2019-09-21 02:01:07', '2019-09-21 02:01:07', NULL, 6, 62);
+INSERT INTO `article_category` VALUES (77, '2019-09-21 02:01:08', '2019-09-21 02:01:08', NULL, 6, 63);
+INSERT INTO `article_category` VALUES (78, '2019-09-21 02:01:09', '2019-09-21 02:01:09', NULL, 6, 64);
+INSERT INTO `article_category` VALUES (79, '2019-09-21 02:01:10', '2019-09-21 02:01:10', NULL, 6, 65);
 
 -- ----------------------------
 -- Table structure for category
