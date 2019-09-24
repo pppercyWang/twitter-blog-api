@@ -4,7 +4,6 @@ import (
 	"../models"
 	"../repo"
 	// "github.com/russross/blackfriday"
-	// "fmt"
 )
 
 type CategoryService interface {

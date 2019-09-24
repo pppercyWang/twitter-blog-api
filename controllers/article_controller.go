@@ -5,6 +5,7 @@ import (
 	"log"
 	"../models"
 	"../service"
+	// "fmt"
 )
 
 type ArticleController struct {
@@ -29,6 +30,26 @@ func (g *ArticleController) PostSave() (result models.Result)  {
 	err := g.Ctx.ReadJSON(&m)
 	if err != nil {
 		log.Println("ReadJSON Error:", err)
+	}
+	if m["Title"] == "" || m["Title"] == nil {
+		result.Code = -1
+		result.Msg = "请输入文章标题"
+		return
+	}
+	if m["Content"] == "" || m["Content"] == nil {
+		result.Code = -1
+		result.Msg = "请输入文章内容"
+		return
+	}
+	if m["Personl"] == "" || m["Personal"] == nil {
+		result.Code = -1
+		result.Msg = "请选择文章类型"
+		return
+	}
+	if m["IDs"] == "" || m["IDs"] == nil {
+		result.Code = -1
+		result.Msg = "请选择至少一个文章分类"
+		return
 	}
 	return g.Service.SaveArticle(m)
 }

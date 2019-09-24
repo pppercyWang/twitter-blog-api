@@ -5,6 +5,7 @@ import (
 	"log"
 	"../models"
 	"../service"
+	// "fmt"
 )
 
 type CategoryController struct {
@@ -20,6 +21,11 @@ func (g *CategoryController) PostSave() (result models.Result)  {
 	err := g.Ctx.ReadJSON(&m)
 	if err != nil {
 		log.Println("ReadJSON Error:", err)
+	}
+	if m["Name"] == "" || m["Name"] == nil {
+		result.Code = -1
+		result.Msg = "请输入分类名称"
+		return
 	}
 	return g.Service.SaveCategory(m)
 }

@@ -22,7 +22,6 @@ func NewArticleService() ArticleService {
 
 var articleRepo = repo.NewArticleRepository()
 var articleCategoryRepo = repo.NewArticleCategoryRepository()
-
 func (u articleService) GetArticleList(m map[string]interface{}) (result models.Result){
 	result.Code = 0
 	total,wechats := articleRepo.GetArticleList(m)
@@ -32,8 +31,8 @@ func (u articleService) GetArticleList(m map[string]interface{}) (result models.
 	result.Data = maps
 	return
 }
+
 func (u articleService) SaveArticle(m map[string]interface{}) (result models.Result){
-	result.Code = 0
 	article,err := articleRepo.SaveArticle(m)
 	if err != nil{
 		result.Code = -1
@@ -43,12 +42,19 @@ func (u articleService) SaveArticle(m map[string]interface{}) (result models.Res
 	articleID := article.ID;
 	ids := strings.Split(cast.ToString(m["IDs"]),",")
 	for _,i := range ids{
+		if cast.ToUint(i) == 0 {
+			result.Code = -1
+			result.Msg = "参数错误 IDs"
+			return
+		}
 		articleCategoryRepo.SaveArticleCategory(articleID,cast.ToUint(i))
 	}
 	maps := make(map[string]interface{},1)
 	maps["article"] = article
+	result.Code = 0
 	result.Data = maps
 	result.Msg = "保存成功"
+
 	return
 }
 

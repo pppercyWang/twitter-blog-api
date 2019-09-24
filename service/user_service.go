@@ -51,17 +51,7 @@ func (u userServices) Login(m map[string]string) (result models.Result) {
 		result.Msg = "用户名或密码错误!"
 		return
 	}
-	// userID,err := api.LoginApi()
-	// if err != nil {
-	// 	log.Println("登录API失败!请联系管理员")
-	// }
-
-	// utils.ApiToken[cast.ToString(user.ID)] = userID
-
-	// fmt.Println("ApiToken: ",utils.ApiToken	)
-
 	user.Token = middleware.GenerateToken(user)
-	// user.Session = userID
 	result.Code = 0
 	result.Data = user
 	result.Msg = "登录成功"
@@ -80,7 +70,6 @@ func (u userServices) Save(user models.User) (result models.Result){
 			return
 		}
 	}
-
 	code,p := userRepo.Save(user)
 	if code == -1 {
 		result.Code = -1;
