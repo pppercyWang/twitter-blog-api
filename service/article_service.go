@@ -5,7 +5,8 @@ import (
 	"../repo"
 	"strings"
 	"github.com/spf13/cast"
-	 _ "fmt"
+	//  "fmt"
+	//  "../util"
 	// "github.com/russross/blackfriday"
 )
 
@@ -40,21 +41,23 @@ func (u articleService) SaveArticle(m map[string]interface{}) (result models.Res
 		return
 	}
 	articleID := article.ID;
-	ids := strings.Split(cast.ToString(m["IDs"]),",")
+	ids := strings.Split(cast.ToString(m["CategoryIDs"]),",")
 	for _,i := range ids{
-		if cast.ToUint(i) == 0 {
-			result.Code = -1
-			result.Msg = "参数错误 IDs"
-			return
-		}
-		articleCategoryRepo.SaveArticleCategory(articleID,cast.ToUint(i))
+		category:=categoryRepo.GetCategory(cast.ToUint(i))
+		articleCategoryRepo.SaveArticleCategory(articleID,cast.ToUint(i),category.Name)
 	}
+	categories := articleCategoryRepo.GetArticleCategoryList(articleID)
+	categorieArr := []string{}
+	for _,item := range categories{
+		categorieArr = append(categorieArr, item.CategoryName)
+	}
+	article2 := articleRepo.SaveArticleCategories(articleID,strings.Join(categorieArr,","))
+	article.Categories = article2.Categories
 	maps := make(map[string]interface{},1)
 	maps["article"] = article
 	result.Code = 0
 	result.Data = maps
 	result.Msg = "保存成功"
-
 	return
 }
 

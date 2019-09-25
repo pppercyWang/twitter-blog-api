@@ -22,6 +22,7 @@ import (
 type ArticleRepository interface {
 	GetArticleList(m map[string]interface{}) (total int, articles []models.Article)
 	SaveArticle(m map[string]interface{}) (article models.Article,err error)
+	SaveArticleCategories(articleID uint,categoryStr string)(article models.Article)
 }
 
 func NewArticleRepository() ArticleRepository {
@@ -46,5 +47,11 @@ func (n articleRepository)SaveArticle(m map[string]interface{})(article models.A
 	article.Tags = cast.ToString(m["Tags"])
 	db := datasource.GetDB()
 	err = db.Save(&article).Error;
+	return
+}
+func (n articleRepository)SaveArticleCategories(articleID uint,categoryStr string)(article models.Article){
+	article.ID = articleID
+	db := datasource.GetDB()
+	db.Model(&article).Update("categories", categoryStr)
 	return
 }

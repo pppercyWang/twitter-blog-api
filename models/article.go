@@ -10,4 +10,5 @@ type Article struct {
 	Title     string `gorm:"type:varchar(80);not null;"`
 	Tags  string `gorm:"type:varchar(20)"`
 	Personal uint `gorm:"default:0"`	
+	Categories string `gorm:"type:varchar(20)"`
 }

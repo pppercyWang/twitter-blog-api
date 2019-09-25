@@ -14,6 +14,7 @@ import (
 type CategoryRepository interface {
 	SaveCategory(m map[string]interface{})(category models.Category)
 	GetCategoryList(m map[string]interface{})(categorys []models.Category)
+	GetCategory(categoryID uint)(category models.Category)
 }
 
 func NewCategoryRepository() CategoryRepository {
@@ -26,6 +27,12 @@ func (n categoryRepository)SaveCategory(m map[string]interface{})(category model
 	category.Name = cast.ToString(m["Name"]);
 	db := datasource.GetDB()
 	db.Save(&category);
+	return
+}
+
+func (n categoryRepository)GetCategory(categoryID uint)(category models.Category){
+	db := datasource.GetDB()
+	db.First(&category, categoryID)
 	return
 }
 

@@ -8,4 +8,5 @@ type ArticleCategory struct {
 	gorm.Model
 	CategoryID uint `gorm:"not null"`
 	ArticleID uint `gorm:"not null"`
+	CategoryName string `gorm:"type:varchar(20)"`
 }

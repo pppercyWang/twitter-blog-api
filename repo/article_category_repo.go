@@ -18,7 +18,8 @@ import (
 )
 
 type ArticleCategoryRepository interface {
-	SaveArticleCategory(articleID uint,categoryID uint) (articleCategory models.ArticleCategory)
+	SaveArticleCategory(articleID uint,categoryID uint,categoryName string) (articleCategory models.ArticleCategory)
+	GetArticleCategoryList(articleID uint) (articleCategories []models.ArticleCategory)
 }
 
 func NewArticleCategoryRepository() ArticleCategoryRepository {
@@ -27,10 +28,16 @@ func NewArticleCategoryRepository() ArticleCategoryRepository {
 
 type articleCategoryRepository struct{}
 
-func (n articleCategoryRepository)SaveArticleCategory(articleID uint,categoryID uint)(articleCategory models.ArticleCategory){
+func (n articleCategoryRepository)SaveArticleCategory(articleID uint,categoryID uint,categoryName string)(articleCategory models.ArticleCategory){
 	articleCategory.ArticleID = articleID
 	articleCategory.CategoryID = categoryID
+	articleCategory.CategoryName = categoryName
 	db := datasource.GetDB()
 	db.Save(&articleCategory)
+	return
+}
+func (n articleCategoryRepository)GetArticleCategoryList(articleID uint)(articleCategories []models.ArticleCategory){
+	db := datasource.GetDB()
+	db.Where("article_id = ?", articleID).Find(&articleCategories)
 	return
 }
