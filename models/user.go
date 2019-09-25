@@ -2,9 +2,6 @@ package models
 
 import "github.com/jinzhu/gorm"
 
-/*
-用户端注册用户
- */
 type User struct {
 	gorm.Model
 	Username     string `gorm:"unique"`
