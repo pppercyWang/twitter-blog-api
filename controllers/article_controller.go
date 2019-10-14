@@ -84,3 +84,17 @@ func (g *ArticleController) PostSave() (result models.Result)  {
 	return g.Service.SaveArticle(m)
 }
 
+func (g *ArticleController) PostFetch() (result models.Result)  {
+	var m map[string]interface{}
+	err := g.Ctx.ReadJSON(&m)
+	if err != nil {
+		log.Println("ReadJSON Error:", err)
+	}
+	if m["ID"] == "" || m["ID"] == nil {
+		result.Code = -1
+		result.Msg = "参数错误 ID"
+		return
+	}
+	return g.Service.GetArticle(m)
+}
+

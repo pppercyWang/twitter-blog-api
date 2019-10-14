@@ -21,6 +21,7 @@ import (
 
 type ArticleRepository interface {
 	GetArticleList(m map[string]interface{}) (total int, articles []models.Article)
+	GetArticle(articleID uint) (article models.Article)
 	SaveArticle(m map[string]interface{}) (article models.Article,err error)
 	SaveArticleCategories(articleID uint,categoryStr string)(article models.Article)
 }
@@ -30,6 +31,14 @@ func NewArticleRepository() ArticleRepository {
 }
 
 type articleRepository struct{}
+func (n articleRepository)GetArticle(articleID uint)(article models.Article){
+	db := datasource.GetDB()
+	err := db.First(&article, articleID).Error
+	if err!=nil {
+		panic("select Error")
+	}
+	return
+}
 func (n articleRepository)GetArticleList(m map[string]interface{})(total int,articles []models.Article){
 	db := datasource.GetDB()
 	err := db.Limit(cast.ToInt(m["Size"])).Offset((cast.ToInt(m["Page"])-1)*cast.ToInt(m["Size"])).Find(&articles).Error

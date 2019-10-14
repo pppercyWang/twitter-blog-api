@@ -13,6 +13,7 @@ import (
 type ArticleService interface {
 	GetArticleList(m map[string]interface{}) (result models.Result)
 	SaveArticle(m map[string]interface{}) (result models.Result)
+	GetArticle(m map[string]interface{}) (result models.Result)
 }
 type articleService struct {
 }
@@ -23,6 +24,14 @@ func NewArticleService() ArticleService {
 
 var articleRepo = repo.NewArticleRepository()
 var articleCategoryRepo = repo.NewArticleCategoryRepository()
+
+func (u articleService) GetArticle(m map[string]interface{}) (result models.Result){
+	result.Code = 0
+	article := articleRepo.GetArticle(cast.ToUint(m["ID"]))
+	result.Data = article
+	return
+}
+
 func (u articleService) GetArticleList(m map[string]interface{}) (result models.Result){
 	result.Code = 0
 	total,wechats := articleRepo.GetArticleList(m)
