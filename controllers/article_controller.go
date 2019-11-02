@@ -47,6 +47,7 @@ func (g *ArticleController) PostList() (result models.Result)  {
 	}
 	return g.Service.GetArticleList(m)
 }
+
 func (g *ArticleController) PostSave() (result models.Result)  {
 	var m map[string]interface{}
 	err := g.Ctx.ReadJSON(&m)
@@ -74,7 +75,7 @@ func (g *ArticleController) PostSave() (result models.Result)  {
 		return
 	}
 	ids := strings.Split(cast.ToString(m["CategoryIDs"]),",")
-	for _,i := range ids{
+	for _,i := range ids {
 		if cast.ToUint(i) == 0 {
 			result.Code = -1
 			result.Msg = "参数错误 CategoryIDs"
@@ -97,4 +98,3 @@ func (g *ArticleController) PostFetch() (result models.Result)  {
 	}
 	return g.Service.GetArticle(m)
 }
-
