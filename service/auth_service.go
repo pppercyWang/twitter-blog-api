@@ -17,7 +17,6 @@ type authService struct {
 func NewAuthService() AuthService {
 	return &authService{}
 }
-
 func (u authService) GetUserInfo(m map[string]interface{}) (result models.Result){
 	result.Code = 0
 	retStr :=utils.PostRequest("https://github.com/login/oauth/access_token",m)
