@@ -54,6 +54,11 @@ func (g *ArticleController) PostSave() (result models.Result)  {
 	if err != nil {
 		log.Println("ReadJSON Error:", err)
 	}
+	if m["HostKey"] != "789789" {
+		result.Code = -1
+		result.Msg = "HostKey错误"
+		return
+	}
 	if m["Title"] == "" || m["Title"] == nil {
 		result.Code = -1
 		result.Msg = "请输入文章标题"

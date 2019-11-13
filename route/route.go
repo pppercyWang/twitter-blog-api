@@ -13,5 +13,6 @@ func InitRouter(app *iris.Application) {
 	mvc.New(app.Party( bathUrl + "/category")).Handle(controllers.NewCategoryController())
 	mvc.New(app.Party( bathUrl + "/article")).Handle(controllers.NewArticleController())
 	mvc.New(app.Party( bathUrl + "/auth")).Handle(controllers.NewAuthController())
+	mvc.New(app.Party( bathUrl + "/comment")).Handle(controllers.NewCommentController())
 	app.Use(middleware.GetJWT().Serve)
 }

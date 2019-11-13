@@ -80,3 +80,4 @@ func (u userServices) Save(user models.User) (result models.Result){
 	result.Data = p
 	return
 }
+

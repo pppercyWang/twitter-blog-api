@@ -10,5 +10,7 @@ func Createtable() {
 		&models.Article{},
 		&models.Category{},
 		&models.ArticleCategory{},
+		&models.GitUser{},
+		&models.Comment{},
 	)
 }

@@ -41,7 +41,7 @@ func (n articleRepository)GetArticle(articleID uint)(article models.Article){
 }
 func (n articleRepository)GetArticleList(m map[string]interface{})(total int,articles []models.Article){
 	db := datasource.GetDB()
-	err := db.Limit(cast.ToInt(m["Size"])).Offset((cast.ToInt(m["Page"])-1)*cast.ToInt(m["Size"])).Find(&articles).Error
+	err := db.Limit(cast.ToInt(m["Size"])).Offset((cast.ToInt(m["Page"])-1)*cast.ToInt(m["Size"])).Order("created_at desc").Find(&articles).Error
 	if err!=nil {
 		panic("select Error")
 	}
