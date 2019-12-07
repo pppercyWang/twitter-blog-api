@@ -17,6 +17,7 @@ func NewAuthController() *AuthController {
 func (g *AuthController) PostUserInfo() (result models.Result)  {
 	var m map[string]interface{}
 	err := g.Ctx.ReadJSON(&m)
+	
 	if err != nil {
 		log.Println("ReadJSON Error:", err)
 	}
