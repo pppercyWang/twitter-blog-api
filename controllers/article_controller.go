@@ -54,7 +54,7 @@ func (g *ArticleController) PostSave() (result models.Result)  {
 	if err != nil {
 		log.Println("ReadJSON Error:", err)
 	}
-	if m["HostKey"] != "789789" {
+	if m["HostKey"] != "998800" {
 		result.Code = -1
 		result.Msg = "HostKey错误"
 		return
