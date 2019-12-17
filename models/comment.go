@@ -10,4 +10,5 @@ type Comment struct {
 	Username     string
 	AvatarUrl       string 
 	GithubUrl string
+	ArticleTitle string
 }

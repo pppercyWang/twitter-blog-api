@@ -27,10 +27,7 @@ func NewArticleRepository() ArticleRepository {
 type articleRepository struct{}
 func (n articleRepository)GetArticle(articleID uint)(article models.Article){
 	db := datasource.GetDB()
-	err := db.First(&article, articleID).Error
-	if err!=nil {
-		panic("select Error")
-	}
+	db.First(&article, articleID)
 	return
 }
 func (n articleRepository)GetArticleList(m map[string]interface{})(total int,articles []models.Article){

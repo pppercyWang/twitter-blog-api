@@ -6,7 +6,6 @@ import (
 	// "../util"
 	"github.com/spf13/cast"
 	// "log"
-	// "fmt"
 	// "io/ioutil"
 	// "testing"
 )
@@ -20,11 +19,14 @@ type CommentRepository interface {
 func NewCommentRepository() CommentRepository {
 	return &commentRepository{}
 }
+var articleRepo = NewArticleRepository()
 
 type commentRepository struct{}
 
 func (n commentRepository)SaveComment(m map[string]interface{})(comment models.Comment){
 	db := datasource.GetDB()
+	article := articleRepo.GetArticle(cast.ToUint(m["ArticleID"]) )
+	comment.ArticleTitle = article.Title
 	comment.Content = cast.ToString(m["Content"])
 	comment.ArticleID =cast.ToUint(m["ArticleID"]) 
 	comment.GitUserID = cast.ToUint(m["GitUserID"])
