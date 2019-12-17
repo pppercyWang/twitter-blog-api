@@ -34,10 +34,10 @@ func (u articleService) GetArticle(m map[string]interface{}) (result models.Resu
 
 func (u articleService) GetArticleList(m map[string]interface{}) (result models.Result){
 	result.Code = 0
-	total,wechats := articleRepo.GetArticleList(m)
+	total,articles := articleRepo.GetArticleList(m)
 	maps := make(map[string]interface{},2)
 	maps["Total"] = total
-	maps["List"] = wechats
+	maps["List"] = articles
 	result.Data = maps
 	return
 }

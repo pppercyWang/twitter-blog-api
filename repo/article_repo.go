@@ -1,9 +1,3 @@
-/*
-@Time : 2019/4/8 10:03
-@Author : lukebryan
-@File : user_repo
-@Software: GoLand
-*/
 package repo
 
 import (
@@ -41,11 +35,18 @@ func (n articleRepository)GetArticle(articleID uint)(article models.Article){
 }
 func (n articleRepository)GetArticleList(m map[string]interface{})(total int,articles []models.Article){
 	db := datasource.GetDB()
-	err := db.Limit(cast.ToInt(m["Size"])).Offset((cast.ToInt(m["Page"])-1)*cast.ToInt(m["Size"])).Order("created_at desc").Find(&articles).Error
+	var  err error; 
+	if m["Personal"] == nil {
+
+		datasource.GetDB().Model(&models.Article{}).Count(&total)
+		 err = db.Limit(cast.ToInt(m["Size"])).Offset((cast.ToInt(m["Page"])-1)*cast.ToInt(m["Size"])).Order("created_at desc").Find(&articles).Error
+	}else{
+		datasource.GetDB().Model(&models.Article{}).Where("personal = ?", cast.ToInt(m["Personal"])).Count(&total)
+		err =  db.Limit(cast.ToInt(m["Size"])).Offset((cast.ToInt(m["Page"])-1)*cast.ToInt(m["Size"])).Where("personal = ?", cast.ToInt(m["Personal"])).Order("created_at desc").Find(&articles).Error
+	}
 	if err!=nil {
 		panic("select Error")
 	}
-	datasource.GetDB().Model(&models.Article{}).Count(&total)
 	return
 }
 func (n articleRepository)SaveArticle(m map[string]interface{})(article models.Article,err error){

@@ -1,9 +1,4 @@
-/*
-@Time : 2019/4/3 11:09 
-@Author : lukebryan
-@File : NoticeService
-@Software: GoLand
-*/
+
 package service
 
 import (

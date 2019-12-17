@@ -1,9 +1,4 @@
-/*
-@Time : 2019/4/8 10:03
-@Author : lukebryan
-@File : user_repo
-@Software: GoLand
-*/
+
 package repo
 import (
 	"../datasource"
