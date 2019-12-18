@@ -6,7 +6,6 @@ import (
 	// "../util"
 	"github.com/spf13/cast"
 	// "log"
-	// "fmt"
 	// "strings"
 	// "reflect"
 	// "io/ioutil"
@@ -18,6 +17,7 @@ type ArticleRepository interface {
 	GetArticle(articleID uint) (article models.Article)
 	SaveArticle(m map[string]interface{}) (article models.Article,err error)
 	SaveArticleCategories(articleID uint,categoryStr string)(article models.Article)
+	GetArticleCount()(map[string]int)
 }
 
 func NewArticleRepository() ArticleRepository {
@@ -25,6 +25,18 @@ func NewArticleRepository() ArticleRepository {
 }
 
 type articleRepository struct{}
+
+func (n articleRepository)GetArticleCount()(map[string]int){
+	lifeCount := 0
+	skillCount := 0
+	temp := make(map[string]int)
+	datasource.GetDB().Model(&models.Article{}).Where("personal = ?", 1).Count(&lifeCount)
+	datasource.GetDB().Model(&models.Article{}).Where("personal = ?", 0).Count(&skillCount)
+	temp["Life"] = lifeCount
+	temp["Skill"] = skillCount
+	return temp
+}
+
 func (n articleRepository)GetArticle(articleID uint)(article models.Article){
 	db := datasource.GetDB()
 	db.First(&article, articleID)

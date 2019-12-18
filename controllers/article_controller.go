@@ -19,6 +19,10 @@ func NewArticleController() *ArticleController {
 	return &ArticleController{ Service: service.NewArticleService() }
 }
 
+func (g *ArticleController) PostCount() (result models.Result)  {
+	return g.Service.GetArticleCount()
+}
+
 func (g *ArticleController) PostList() (result models.Result)  {
 	var m map[string]interface{}
 	err := g.Ctx.ReadJSON(&m)

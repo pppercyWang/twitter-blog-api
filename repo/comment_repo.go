@@ -45,8 +45,13 @@ func (n commentRepository)GetComment(commentID uint)(comment models.Comment){
 
 func (n commentRepository)GetCommentList(m map[string]interface{})(comments []models.Comment){
 	db := datasource.GetDB()
-	var articleID = cast.ToUint(m["ArticleID"]) 
-	err := db.Where("article_id = ?", articleID).Find(&comments).Error
+	var err error
+	if m["ArticleID"] == nil {
+		err = db.Find(&comments).Error
+	}else{
+		err = db.Where("article_id = ?", cast.ToUint(m["ArticleID"]) ).Find(&comments).Error
+	}
+
 	if err!= nil{
 		panic("select Error")
 	}

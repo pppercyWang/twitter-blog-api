@@ -2,7 +2,7 @@
   "Port": "8848",
   "DBUserName": "root",
   "DBPassword": "123456",
-  "DBIp": "127.0.0.1",
+  "DBIp": "106.12.221.34",
   "DBPort": "3306",
   "DBName": "information_cache"
 }

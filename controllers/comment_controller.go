@@ -55,11 +55,6 @@ func (g *CommentController) PostSave() (result models.Result)  {
 func (g *CommentController) PostList() (result models.Result)  {
 	var m map[string]interface{}
 	err := g.Ctx.ReadJSON(&m)
-	if m["ArticleID"] == "" || m["ArticleID"] == nil {
-		result.Code = -1
-		result.Msg = "文章ID不能为空"
-		return
-	}
 	if err != nil {
 		log.Println("ReadJSON Error:", err)
 	}

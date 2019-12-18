@@ -14,6 +14,7 @@ type ArticleService interface {
 	GetArticleList(m map[string]interface{}) (result models.Result)
 	SaveArticle(m map[string]interface{}) (result models.Result)
 	GetArticle(m map[string]interface{}) (result models.Result)
+	GetArticleCount() (result models.Result)
 }
 type articleService struct {
 }
@@ -24,6 +25,13 @@ func NewArticleService() ArticleService {
 
 var articleRepo = repo.NewArticleRepository()
 var articleCategoryRepo = repo.NewArticleCategoryRepository()
+
+func (u articleService) GetArticleCount() (result models.Result){
+	result.Code = 0
+	count := articleRepo.GetArticleCount()
+	result.Data = count
+	return
+}
 
 func (u articleService) GetArticle(m map[string]interface{}) (result models.Result){
 	result.Code = 0
