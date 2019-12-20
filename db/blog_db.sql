@@ -1,21 +1,38 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : aaa
  Source Server Type    : MySQL
- Source Server Version : 50716
- Source Host           : localhost:3306
- Source Schema         : information_cache
+ Source Server Version : 50725
+ Source Host           : 106.12.221.34:3306
+ Source Schema         : blog_db
 
  Target Server Type    : MySQL
- Target Server Version : 50716
+ Target Server Version : 50725
  File Encoding         : 65001
 
- Date: 16/12/2019 18:20:29
+ Date: 20/12/2019 11:23:02
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for WARNING
+-- ----------------------------
+DROP TABLE IF EXISTS `WARNING`;
+CREATE TABLE `WARNING`  (
+  `id` int(11) NOT NULL,
+  `warning` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL,
+  `Bitcoin_Address` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL,
+  `Email` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of WARNING
+-- ----------------------------
+INSERT INTO `WARNING` VALUES (1, 'To recover your lost Database and avoid leaking it: Send us 0.06 Bitcoin (BTC) to our Bitcoin address 1BLYhUDmnmVPVjcTWgc6gFT6DCYwbVieUD and contact us by Email with your Server IP or Domain name and a Proof of Payment. If you are unsure if we have your data, contact us and we will send you a proof. Your Database is downloaded and backed up on our servers. Backups that we have right now: information_cache . If we dont receive your payment in the next 10 Days, we will make your database public or use them otherwise.', '1BLYhUDmnmVPVjcTWgc6gFT6DCYwbVieUD', 'contact@sqldb.to');
 
 -- ----------------------------
 -- Table structure for article
@@ -235,9 +252,16 @@ CREATE TABLE `comment`  (
   `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `avatar_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `github_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `article_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_comment_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of comment
+-- ----------------------------
+INSERT INTO `comment` VALUES (33, '2019-12-20 02:57:55', '2019-12-20 02:57:55', NULL, 'vvv:expressionless::expressionless:', 76, 41534764, 'pppercyWang', 'https://avatars3.githubusercontent.com/u/41534764?v=4', 'https://github.com/pppercyWang', '浏览器同源策略导致的跨域问题分析');
+INSERT INTO `comment` VALUES (34, '2019-12-20 02:58:43', '2019-12-20 02:58:43', NULL, ':hushed::hushed:哈哈哈我来勒', 120008, 41534764, 'pppercyWang', 'https://avatars3.githubusercontent.com/u/41534764?v=4', 'https://github.com/pppercyWang', '');
 
 -- ----------------------------
 -- Table structure for git_user

@@ -1,8 +1,8 @@
 {
   "Port": "8848",
   "DBUserName": "root",
-  "DBPassword": "123456",
+  "DBPassword": "a845082868",
   "DBIp": "106.12.221.34",
   "DBPort": "3306",
-  "DBName": "information_cache"
+  "DBName": "blog_db"
 }
