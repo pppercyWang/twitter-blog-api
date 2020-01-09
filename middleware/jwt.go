@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-const JwtKey = "youmi"
+const JwtKey = "percy"
 
 func GetJWT() *jwtmiddleware.Middleware {
 	jwtHandler := jwtmiddleware.New(jwtmiddleware.Config{
