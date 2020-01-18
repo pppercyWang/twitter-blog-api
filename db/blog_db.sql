@@ -11,7 +11,7 @@
  Target Server Version : 50725
  File Encoding         : 65001
 
- Date: 13/01/2020 18:34:32
+ Date: 18/01/2020 17:12:13
 */
 
 SET NAMES utf8mb4;
@@ -245,7 +245,7 @@ CREATE TABLE `comment`  (
   `article_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_comment_deleted_at`(`deleted_at`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of comment
@@ -254,6 +254,7 @@ INSERT INTO `comment` VALUES (33, '2019-12-20 02:57:55', '2019-12-20 02:57:55', 
 INSERT INTO `comment` VALUES (34, '2019-12-20 02:58:43', '2019-12-20 02:58:43', NULL, ':hushed::hushed:哈哈哈我来勒', 120008, 41534764, 'pppercyWang', 'https://avatars3.githubusercontent.com/u/41534764?v=4', 'https://github.com/pppercyWang', '');
 INSERT INTO `comment` VALUES (35, '2020-01-09 07:48:24', '2020-01-09 07:48:24', NULL, 'wwww', 120008, 41534764, 'pppercyWang', 'https://avatars3.githubusercontent.com/u/41534764?v=4', 'https://github.com/pppercyWang', '');
 INSERT INTO `comment` VALUES (36, '2020-01-13 09:26:52', '2020-01-13 09:26:52', NULL, '我是温大漂亮', 74, 49860831, 'WenHaiYana', 'https://avatars1.githubusercontent.com/u/49860831?v=4', 'https://github.com/WenHaiYana', '基于vue的emoji表情评论组件');
+INSERT INTO `comment` VALUES (37, '2020-01-16 07:44:04', '2020-01-16 07:44:04', NULL, '有点牛逼:sleepy:', 120008, 28852149, 'GitRoySu', 'https://avatars3.githubusercontent.com/u/28852149?v=4', 'https://github.com/GitRoySu', '');
 
 -- ----------------------------
 -- Table structure for git_user
@@ -270,6 +271,8 @@ CREATE TABLE `git_user`  (
 -- ----------------------------
 -- Records of git_user
 -- ----------------------------
+INSERT INTO `git_user` VALUES (27666112, 'LiWhite', 'https://avatars3.githubusercontent.com/u/27666112?v=4', 'https://github.com/LiWhite');
+INSERT INTO `git_user` VALUES (28852149, 'GitRoySu', 'https://avatars3.githubusercontent.com/u/28852149?v=4', 'https://github.com/GitRoySu');
 INSERT INTO `git_user` VALUES (41534764, 'pppercyWang', 'https://avatars3.githubusercontent.com/u/41534764?v=4', 'https://github.com/pppercyWang');
 INSERT INTO `git_user` VALUES (41534765, '', '', '');
 INSERT INTO `git_user` VALUES (41534766, '', '', '');
