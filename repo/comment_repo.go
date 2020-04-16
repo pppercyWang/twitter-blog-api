@@ -12,7 +12,7 @@ import (
 
 type CommentRepository interface {
 	SaveComment(m map[string]interface{})(comment models.Comment)
-	GetCommentList(m map[string]interface{})(comments []models.Comment)
+	GetCommentList(m map[string]interface{})(total int,comments []models.Comment)
 	GetComment(commentID uint)(comment models.Comment)
 }
 
@@ -43,13 +43,18 @@ func (n commentRepository)GetComment(commentID uint)(comment models.Comment){
 	return
 }
 
-func (n commentRepository)GetCommentList(m map[string]interface{})(comments []models.Comment){
+func (n commentRepository)GetCommentList(m map[string]interface{})(total int,comments []models.Comment){
 	db := datasource.GetDB()
 	var err error
 	if m["ArticleID"] == nil {
-		err = db.Find(&comments).Error
+		if m["Size"]==nil || m["Page"]==nil {
+			err = db.Order("created_at desc").Find(&comments).Error
+		}else{
+			db.Model(&models.Comment{}).Count(&total)
+			err = db.Limit(cast.ToInt(m["Size"])).Offset((cast.ToInt(m["Page"])-1)*cast.ToInt(m["Size"])).Order("created_at desc").Find(&comments).Error
+		}
 	}else{
-		err = db.Where("article_id = ?", cast.ToUint(m["ArticleID"]) ).Find(&comments).Error
+		err = db.Where("article_id = ?", cast.ToUint(m["ArticleID"]) ).Order("created_at desc").Find(&comments).Error
 	}
 
 	if err!= nil{

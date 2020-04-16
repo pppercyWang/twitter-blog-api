@@ -1,4 +1,4 @@
-# twitter-blog-vue
+# twitter-blog-api
 
 打算模仿twitter的风格在工作之余写一个自己的博客。手写所有用到的组件，后端使用golang（iris+gorm），前端是用vue.js进行开发。欢迎 issue && star~
 

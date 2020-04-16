@@ -25,9 +25,12 @@ func (u commentService) SaveComment(m map[string]interface{}) (result models.Res
 	return
 }
 func (u commentService) GetCommentList(m map[string]interface{}) (result models.Result){
-	comments := commentRepo.GetCommentList(m)
+	total,comments := commentRepo.GetCommentList(m)
 	result.Code = 0
 	maps := make(map[string]interface{},1)
+	if total != 0 {
+		maps["Total"] = total
+	}
 	maps["List"] = comments
 	result.Data = maps
 	return
