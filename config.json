@@ -2,7 +2,7 @@
   "Port": "8848",
   "DBUserName": "root",
   "DBPassword": "a845082868",
-  "DBIp": "106.12.221.34",
+  "DBIp": "47.105.189.195",
   "DBPort": "3306",
   "DBName": "blog_db"
 }
