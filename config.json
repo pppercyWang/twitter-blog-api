@@ -1,8 +1,8 @@
 {
   "Port": "8848",
   "DBUserName": "root",
-  "DBPassword": "a845082868",
-  "DBIp": "47.105.189.195",
+  "DBPassword": "123456",
+  "DBIp": "localhost",
   "DBPort": "3306",
   "DBName": "blog_db"
 }
